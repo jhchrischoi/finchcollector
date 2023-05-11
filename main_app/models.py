@@ -1,5 +1,11 @@
 from django.db import models
 
+MEALS = (
+    ('F', 'Fruit'),
+    ('S', 'Seed'),
+    ('G', 'Grass')
+)
+
 # Create your models here.
 class Finch(models.Model):
     name = models.CharField(max_length=100)
@@ -8,15 +14,5 @@ class Finch(models.Model):
     trend = models.CharField(max_length=100)
   
     def __str__(self):
-        return self.name
+        return f'{self.name} ({self.id})'
 
-# finches = [
-#   {'name':'Evening Grosbeak',
-#   'population':'3.4 Million',
-#   'habitat':'Northern and montane forests',
-#   'trend':'Decreasing population'},
-#   {'name':'Pine Grosbeak',
-#   'population':'4.4 Million',
-#   'habitat':'Open boreal forest',
-#   'trend':'Decreasing population'}
-# ]
