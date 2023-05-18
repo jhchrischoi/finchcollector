@@ -7,12 +7,23 @@ MEALS = (
     ('G', 'Grass')
 )
 
+class Toy(models.Model):
+  name = models.CharField(max_length=100)
+  color = models.CharField(max_length=100)
+
+  def __str__(self):
+    return self.name
+
+  def get_absolute_url(self):
+    return reverse('toys_detail', kwargs={'pk': self.id})
+
 # Create your models here.
 class Finch(models.Model):
     name = models.CharField(max_length=100)
     population = models.CharField(max_length=100)
     habitat= models.CharField(max_length=100)
     trend = models.CharField(max_length=100)
+    toys = models.ManyToManyField(Toy)
   
     def __str__(self):
         return f'{self.name} ({self.id})'
